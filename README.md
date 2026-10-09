@@ -4,7 +4,7 @@ A status line for [Claude Code](https://claude.com/claude-code). It shows the mo
 
 The repo and branch are clickable links in terminals that support OSC 8 hyperlinks, such as iTerm2, WezTerm, Kitty and Ghostty. The repo icon takes the colour of its host: GitLab orange, Azure DevOps blue, Bitbucket blue. GitHub uses your terminal's text colour, because its brand black disappears on dark themes.
 
-Supported remotes: GitHub, GitLab, Azure DevOps (`dev.azure.com` and `visualstudio.com`) and Bitbucket, over SSH or HTTPS. Other hosts get a generic git icon and a best-guess web link.
+Supported remotes: GitHub, GitLab, Azure DevOps (`dev.azure.com` and `visualstudio.com`) and Bitbucket, over SSH or HTTPS. Other hosts get a generic git icon and a best-guess web link. Local paths get no link.
 
 ## Requirements
 
@@ -32,7 +32,11 @@ The status line appears on the next refresh.
 
 ## Context use
 
-The context figure turns yellow at 50% and red at 80%. Older Claude Code builds do not send `context_window`, so the script estimates use from the transcript and assumes a 200k window.
+The context figure turns yellow at 50% and red at 80%.
+
+## Safety
+
+The script strips terminal control codes from the model, folder, branch and remote before it prints them. If a remote URL still has odd characters after that, the script shows no repo link.
 
 ## Licence
 
