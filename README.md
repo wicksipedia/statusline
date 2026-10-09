@@ -19,7 +19,7 @@ A status line for [Claude Code](https://claude.com/claude-code).
 
 If Claude Code does not send a value, the script hides that part.
 
-The folder, repo and branch links work in terminals that support OSC 8 hyperlinks, such as iTerm2, WezTerm, Kitty and Ghostty. Your terminal sets the key you hold to open a link. On macOS, iTerm2 and Ghostty use Cmd+click. The repo icon colours are GitLab orange, Azure DevOps blue and Bitbucket blue. GitHub uses your terminal's text colour, because its brand black disappears on dark themes.
+The folder, repo and branch links work in terminals that support OSC 8 hyperlinks, such as iTerm2, WezTerm, Kitty, Ghostty and bigtty. Your terminal sets the key you hold to open a link. On macOS, iTerm2 and Ghostty use Cmd+click. In bigtty, Ctrl+click opens the link in Finder or your browser, and Cmd+click opens it in a bigtty pane. The repo icon colours are GitLab orange, Azure DevOps blue and Bitbucket blue. GitHub uses your terminal's text colour, because its brand black disappears on dark themes.
 
 Supported remotes: GitHub, GitLab, Azure DevOps (`dev.azure.com` and `visualstudio.com`) and Bitbucket, over SSH or HTTPS. Other hosts get a generic git icon and a best-guess web link. Local paths get no link.
 
