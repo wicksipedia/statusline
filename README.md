@@ -1,10 +1,29 @@
 # statusline
 
-A status line for [Claude Code](https://claude.com/claude-code). It shows the model, folder, repo, branch, session cost, time, lines changed and context use on one line.
+A status line for [Claude Code](https://claude.com/claude-code).
 
-The repo and branch are clickable links in terminals that support OSC 8 hyperlinks, such as iTerm2, WezTerm, Kitty and Ghostty. The repo icon takes the colour of its host: GitLab orange, Azure DevOps blue, Bitbucket blue. GitHub uses your terminal's text colour, because its brand black disappears on dark themes.
+![The status line: model, folder, repo link, branch link, cost, time, lines changed and context use](screenshot.png)
+
+## What it shows
+
+| Part | Source | Notes |
+|---|---|---|
+| 🤖 Model | Claude Code | The display name, such as Opus 5.5. |
+| 📁 Folder | Claude Code | The last part of the working folder. |
+| Repo | `git remote get-url origin` | A link to the repo's web page. The icon takes the colour of its host. |
+| Branch | `git symbolic-ref` | A link to the branch on the host. If HEAD is detached, it shows the short commit ID instead. Outside a repo, this part is hidden. |
+| 💰 Cost | Claude Code | The session cost in US dollars. |
+| ⏱ Time | Claude Code | Minutes since the session started. |
+| ✏️ Lines | Claude Code | Lines added and removed in this session. |
+| 🧠 Context | Claude Code | How much of the context window you used. It turns yellow at 50% and red at 80%. |
+
+If Claude Code does not send a value, the script hides that part.
+
+The repo and branch links work in terminals that support OSC 8 hyperlinks, such as iTerm2, WezTerm, Kitty and Ghostty. The repo icon colours are GitLab orange, Azure DevOps blue and Bitbucket blue. GitHub uses your terminal's text colour, because its brand black disappears on dark themes.
 
 Supported remotes: GitHub, GitLab, Azure DevOps (`dev.azure.com` and `visualstudio.com`) and Bitbucket, over SSH or HTTPS. Other hosts get a generic git icon and a best-guess web link. Local paths get no link.
+
+The status line does not show your plan usage, such as the five-hour session window or the weekly limit. [Omacchiato](https://github.com/wicksipedia/omacchiato) shows those in its AI usage pill on the macOS menu bar.
 
 ## Requirements
 
@@ -29,10 +48,6 @@ Add this to `~/.claude/settings.json`:
 ```
 
 The status line appears on the next refresh.
-
-## Context use
-
-The context figure turns yellow at 50% and red at 80%.
 
 ## Safety
 
