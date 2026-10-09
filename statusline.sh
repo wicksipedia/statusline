@@ -94,7 +94,13 @@ D="$E[2m│$E[0m"
 R="$E[0m"
 link() { out+="$E]8;;$1$E\\$2$E]8;;$E\\"; }
 
-out="🤖 $E[1;35m$model$R $D 📁 $E[34m$dir$R"
+out="🤖 $E[1;35m$model$R $D 📁 "
+if [ -d "$cwd" ]; then
+  urienc "$cwd" f 1
+  link "file://$f" "$E[34m$dir$R"
+else
+  out+="$E[34m$dir$R"
+fi
 
 if [ -n "$web" ]; then
   name=${web#*://*/}; name=${name/_git\//}

@@ -27,8 +27,12 @@ check azure      "$(repo git@ssh.dev.azure.com:v3/o/p/r f/x)"    "${L}https://de
 check vsts       "$(repo me@vs-ssh.visualstudio.com:v3/o/p/r m)" "${L}https://o.visualstudio.com/p/_git/r"
 check bitbucket  "$(repo git@bitbucket.org:a/b.git m)"           "${L}https://bitbucket.org/a/b/src/m"
 check gitlab-col "$(repo git@gitlab.com:g/p.git m)"              $'\e[38;2;252;109;38m'
-reject local     "$(repo /a/b:c m)"                              "$L"
-reject evil-url  "$(repo $'https://github.com/a/b\e\\\e[2J' m)"  "$L"
+reject local     "$(repo /a/b:c m)"                              "${L}http"
+reject evil-url  "$(repo $'https://github.com/a/b\e\\\e[2J' m)"  "${L}http"
+
+mkdir -p "$T/my dir"
+check folder-link "$(printf '{"workspace":{"current_dir":"%s"}}' "$T/my dir" | bash "$S")" "${L}file://${T// /%20}/my%20dir"$'\e'
+reject no-folder-link "$(printf '{"workspace":{"current_dir":"/nope/x"}}' | bash "$S")" "${L}file://"
 
 out=$(printf '{"model":{"display_name":"a\\u001b[2J\\u009bb"},"workspace":{"current_dir":"/x/"}}' | LC_ALL=C bash "$S")
 reject c0-strip "$out" $'\e[2J'

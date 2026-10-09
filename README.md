@@ -9,7 +9,7 @@ A status line for [Claude Code](https://claude.com/claude-code).
 | Part | Source | Notes |
 |---|---|---|
 | 🤖 Model | Claude Code | The display name, such as Opus 5.5. |
-| 📁 Folder | Claude Code | The last part of the working folder. |
+| 📁 Folder | Claude Code | The last part of the working folder. It is a `file://` link, so you can open the folder in Finder or your file manager. |
 | Repo | `git remote get-url origin` | A link to the repo's web page. The icon takes the colour of its host. |
 | Branch | `git symbolic-ref` | A link to the branch on the host. If HEAD is detached, it shows the short commit ID instead. Outside a repo, this part is hidden. |
 | 💰 Cost | Claude Code | The session cost in US dollars. |
