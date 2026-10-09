@@ -38,6 +38,10 @@ The context figure turns yellow at 50% and red at 80%.
 
 The script strips terminal control codes from the model, folder, branch and remote before it prints them. If a remote URL still has odd characters after that, the script shows no repo link.
 
+## Tests
+
+Run `bash test.sh`. It builds throwaway repos in a temp folder and checks the links, icon colours and control-code stripping.
+
 ## Licence
 
 MIT
