@@ -35,7 +35,7 @@ The status line does not show your plan usage, such as the five-hour session win
 Copy the script into your Claude Code folder:
 
 ```sh
-curl -o ~/.claude/statusline.sh https://raw.githubusercontent.com/wicksipedia/statusline/main/statusline.sh
+curl -fsSL -o ~/.claude/statusline.sh https://raw.githubusercontent.com/wicksipedia/statusline/main/statusline.sh
 ```
 
 Add this to `~/.claude/settings.json`:
